@@ -33,30 +33,36 @@ class ProfesoresController {
       }
     }
     listarEventosSemanaMateria(req, res) {
+      const profesorId = parseInt(req.params.profesorId);
       const materiaId = parseInt(req.params.materiaId);
-      const semanaActual = new Date();
-      semanaActual.setDate(semanaActual.getDate() + 7);
+  
+      const profesor = profesoresBD.find((profesor) => profesor.id === profesorId);
+  
+      if (!profesor) {
+        res.status(404).json({ mensaje: "Profesor no encontrado" });
+        return;
+      }
   
       const eventosSemana = eventosBD.filter(
         (evento) =>
           evento.materias_id === materiaId &&
           evento.fecha >= new Date() &&
-          evento.fecha <= semanaActual
+          evento.fecha <= new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000)
       );
   
       res.json({ eventosSemana });
     }
+  
     listarProximosEventos(req, res) {
-      const dosSemanasDespues = new Date();
-      dosSemanasDespues.setDate(dosSemanasDespues.getDate() + 14);
+      const dosSemanasDespues = new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000);
   
       const proximosEventos = eventosBD.filter(
         (evento) => evento.fecha >= new Date() && evento.fecha <= dosSemanasDespues
       );
   
       res.json({ proximosEventos });
-    }  
-}
+    }
+  }
 
-
+  
 module.exports = new ProfesoresController();

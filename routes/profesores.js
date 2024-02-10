@@ -27,14 +27,14 @@ router.delete("/:id", function(req, res, next) {
   res.send(ProfesoresController.Eliminar(req.params.id));
 });
 
-const express = require('express');
-const router = express.Router();
-const ProfesoresController = require('../controllers/profesoresController');
+// Mostrar Eventos por Semana de una Materia para un Profesor específico
+router.get('/:profesorId/materias/:materiaId/eventos-semana', function(req, res, next) {
+  res.send(ProfesoresController.listarEventosSemanaMateria(req, res));
+});
 
-router.post('/profesores', ProfesoresController.agregar);
-router.get('/profesores', ProfesoresController.listar);
-router.get('/profesores/:profesorId/eventos-semana/:materiaId', ProfesoresController.listarEventosSemanaMateria);
-router.get('/proximos-eventos', ProfesoresController.listarProximosEventos);
-
+// Mostrar Próximos Eventos para todos los Profesores
+router.get('/proximos-eventos', function(req, res, next) {
+  res.send(ProfesoresController.listarProximosEventos(req, res));
+});
 
 module.exports = router;

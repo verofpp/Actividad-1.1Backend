@@ -52,17 +52,6 @@ class ProfesoresController {
   
       res.json({ eventosSemana });
     }
-  
-    listarProximosEventos(req, res) {
-      const dosSemanasDespues = new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000);
-  
-      const proximosEventos = eventosBD.filter(
-        (evento) => evento.fecha >= new Date() && evento.fecha <= dosSemanasDespues
-      );
-  
-      res.json({ proximosEventos });
-    }
-  }
-
+}
   
 module.exports = new ProfesoresController();

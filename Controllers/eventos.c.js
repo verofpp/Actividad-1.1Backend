@@ -32,6 +32,21 @@ class EventosController {
         eventosBD.splice(search,1);
       }
     }
+    listarProximosEventos(req, res) {
+      const fechaDeseada = new Date(req.query.fecha);
+  
+      if (isNaN(fechaDeseada.getTime())) {
+        return res.status(400).json({ mensaje: "Fecha inválida" });
+      }
+  
+      const dosSemanasDespues = new Date(fechaDeseada.getTime() + 14 * 24 * 60 * 60 * 1000);
+  
+      const proximosEventos = eventosBD.filter(
+        (evento) => evento.fecha >= fechaDeseada && evento.fecha <= dosSemanasDespues
+      );
+  
+      res.json({ proximosEventos });
+    }
 }
 
 

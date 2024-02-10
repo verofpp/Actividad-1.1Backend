@@ -32,9 +32,5 @@ router.get('/:profesorId/materias/:materiaId/eventos-semana', function(req, res,
   res.send(ProfesoresController.listarEventosSemanaMateria(req, res));
 });
 
-// Mostrar Próximos Eventos para todos los Profesores
-router.get('/proximos-eventos', function(req, res, next) {
-  res.send(ProfesoresController.listarProximosEventos(req, res));
-});
 
 module.exports = router;

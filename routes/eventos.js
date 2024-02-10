@@ -27,5 +27,9 @@ router.delete("/:id", function(req, res, next) {
   res.send(EventosController.Eliminar(req.params.id));
 });
 
+// Mostrar Próximos Eventos en las dos semanas siguientes a la fecha deseada
+router.get('/proximos-eventos/fecha', function(req, res, next) {
+  res.send(EventosController.listarProximosEventos(req, res));
+});
 
 module.exports = router;

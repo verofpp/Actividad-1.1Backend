@@ -27,5 +27,14 @@ router.delete("/:id", function(req, res, next) {
   res.send(ProfesoresController.Eliminar(req.params.id));
 });
 
+const express = require('express');
+const router = express.Router();
+const ProfesoresController = require('../controllers/profesoresController');
+
+router.post('/profesores', ProfesoresController.agregar);
+router.get('/profesores', ProfesoresController.listar);
+router.get('/profesores/:profesorId/eventos-semana/:materiaId', ProfesoresController.listarEventosSemanaMateria);
+router.get('/proximos-eventos', ProfesoresController.listarProximosEventos);
+
 
 module.exports = router;

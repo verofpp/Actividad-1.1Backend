@@ -1,4 +1,4 @@
-const {profesoresBD} = require("../Models/modelos")
+const { profesoresBD, materiasBD, eventosBD } = require("../Models/modelos")
 
 class ProfesoresController {
     Mostrar() {
@@ -32,6 +32,30 @@ class ProfesoresController {
         profesoresBD.splice(search,1);
       }
     }
+    listarEventosSemanaMateria(req, res) {
+      const materiaId = parseInt(req.params.materiaId);
+      const semanaActual = new Date();
+      semanaActual.setDate(semanaActual.getDate() + 7);
+  
+      const eventosSemana = eventosBD.filter(
+        (evento) =>
+          evento.materias_id === materiaId &&
+          evento.fecha >= new Date() &&
+          evento.fecha <= semanaActual
+      );
+  
+      res.json({ eventosSemana });
+    }
+    listarProximosEventos(req, res) {
+      const dosSemanasDespues = new Date();
+      dosSemanasDespues.setDate(dosSemanasDespues.getDate() + 14);
+  
+      const proximosEventos = eventosBD.filter(
+        (evento) => evento.fecha >= new Date() && evento.fecha <= dosSemanasDespues
+      );
+  
+      res.json({ proximosEventos });
+    }  
 }
 
 

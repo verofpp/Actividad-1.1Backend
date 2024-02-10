@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 var eventosRouter = require('./routes/eventos');
 var materiasRouter = require('./routes/materias');
 var profesoresRouter = require('./routes/profesores');
-
+var seccionesRouter = require('./routes/secciones');
 var app = express();
 
 // view engine setup
@@ -27,6 +27,7 @@ app.use('/users', usersRouter);
 app.use('/eventos', eventosRouter);
 app.use('/materias', materiasRouter);
 app.use('/profesores', profesoresRouter);
+app.use('/secciones', seccionesRouter);
 
 
 // catch 404 and forward to error handler

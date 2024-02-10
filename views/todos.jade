@@ -1,0 +1,23 @@
+html
+  head
+    title Lista de Todos
+  body
+    h1 Lista de Profesores
+
+    each profesor in profesoresBD
+      div.profesor
+        p Nombre: #{profesor.nombre} #{profesor.apellido}
+        p Materias: #{profesor.materias_id.map(id => materiasBD.find(materia => materia.id === id).nombre).join(', ')}
+
+    h2 Lista de Secciones
+
+    each seccion in seccionesBD
+      div.seccion
+        p Nombre: #{seccion.nombre}
+
+    h2 Lista de Materias
+
+    each materia in materiasBD
+      div.materia
+        p Nombre: #{materia.nombre}
+

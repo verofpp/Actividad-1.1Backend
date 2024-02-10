@@ -1,0 +1,10 @@
+html
+  head
+    title Materias
+  body
+    h1 Lista de Materias
+
+    each materia in materiasBD
+      div.materia
+        p Nombre: #{materia.nombre}
+

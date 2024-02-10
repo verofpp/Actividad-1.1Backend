@@ -1,0 +1,11 @@
+html
+  head
+    title Profesores
+  body
+    h1 Lista de Profesores
+
+    each profesor in profesoresBD
+      div.profesor
+        p Nombre: #{profesor.nombre} #{profesor.apellido}
+        p Materias: #{profesor.materias_id.join(', ')}
+

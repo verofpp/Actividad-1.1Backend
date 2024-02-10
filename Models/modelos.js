@@ -74,7 +74,7 @@ seccionesBD = [
         id: 3,
         nombre:"Fin de semana"
     },
-]
+],
 
 
 eventosBD = [

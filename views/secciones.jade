@@ -1,0 +1,9 @@
+html
+  head
+    title Secciones
+  body
+    h1 Lista de Secciones
+
+    each seccion in seccionesBD
+      div.seccion
+        p Nombre: #{seccion.nombre}

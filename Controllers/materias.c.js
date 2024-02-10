@@ -32,6 +32,18 @@ class MateriasController {
         materiasBD.splice(search,1);
       }
     }
+    listarEventosPorSemana(req, res) {
+      const materiaId = parseInt(req.params.materiaId);
+  
+      const eventosMateria = eventosBD.filter(
+        (evento) =>
+          evento.materias_id === materiaId &&
+          evento.fecha >= new Date() &&
+          evento.fecha <= new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000)
+      );
+  
+      res.json({ eventosMateria });
+    }
 }
 
 

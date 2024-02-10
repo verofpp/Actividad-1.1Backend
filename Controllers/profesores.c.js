@@ -1,4 +1,4 @@
-const { profesoresBD, materiasBD, eventosBD } = require("../Models/modelos")
+const { profesoresBD, eventosBD } = require("../Models/modelos")
 
 class ProfesoresController {
     Mostrar() {

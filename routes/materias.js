@@ -27,7 +27,7 @@ router.delete("/:id", function(req, res, next) {
   res.send(MateriasController.Eliminar(req.params.id));
 });
 
-// Mostrar Eventos de una Materia por Semana
+//Mostrar Eventos de una Materia por Semana
 router.get('/:materiaId/eventos-semana', function(req, res, next) {
   res.send(MateriasController.listarEventosPorSemana(req, res));
 });
